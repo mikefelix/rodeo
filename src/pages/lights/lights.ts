@@ -15,15 +15,12 @@ export class LightsPage implements OnInit {
   offIcon = 'radio-button-off';
   bulbsOn = 0;
 
-  icons = {
-    garage: 'refresh',
-    breezeway: 'refresh',
-    aquarium: 'refresh',
-    lamp: 'refresh'
-  };
+  bulbs = ['outside', 'garage', 'breezeway', 'driveway', 'aquarium', 'coffee', 'lamp', 'fan'];
+  icons = {};
 
   constructor(private garageService: GarageService) {
     this.state = new HouseState();
+    this.bulbs.map(bulb => this.icons[bulb] = 'refresh');
   }
 
   ngOnInit():void {
@@ -49,8 +46,8 @@ export class LightsPage implements OnInit {
       this.garageService.getHouseState(true)
         .then((state: HouseState) => {
           this.state = state;
-          var count = 0;
-          for (let bulb of ['garage', 'breezeway', 'aquarium', 'lamp']) {
+          let count = 0;
+          for (let bulb of ['outside', 'garage', 'breezeway', 'driveway', 'aquarium', 'lamp', 'ouside', 'coffee', 'fan']) {
             this.icons[bulb] = state.bulbs[bulb] ? this.onIcon : this.offIcon;
             if (this.state.bulbs[bulb]) count++;
           }

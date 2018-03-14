@@ -10,8 +10,8 @@ import { WeatherPage } from "../weather/weather";
 export class TabsPage {
   // this tells the tabs component which Pages
   // should be each tab's root Page
-  tab1Root: any = GaragePage;
-  tab2Root: any = LightsPage;
+  tab1Root: any = LightsPage;
+  tab2Root: any = GaragePage;
   tab3Root: any = WeatherPage;
 
   constructor() {

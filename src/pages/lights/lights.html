@@ -18,13 +18,13 @@
 
   <div *ngIf="errorMessage">{{errorMessage}}</div>
   <ion-list>
-      <ion-item><button ion-button full large icon-left (click)="toggleLight('garage')">
-        <ion-icon [name]="icons.garage"></ion-icon>
+      <ion-item><button ion-button full large icon-left (click)="toggleLight('outside')">
+        <ion-icon [name]="icons.outside"></ion-icon>
         Garage
       </button></ion-item>
-      <ion-item><button ion-button full large icon-left (click)="toggleLight('breezeway')">
-        <ion-icon [name]="icons.breezeway"></ion-icon>
-        Breezeway
+      <ion-item><button ion-button full large icon-left (click)="toggleLight('driveway')">
+        <ion-icon [name]="icons.driveway"></ion-icon>
+        Driveway
       </button></ion-item>
       <ion-item><button ion-button full large icon-left (click)="toggleLight('lamp')">
         <ion-icon [name]="icons.lamp"></ion-icon>
@@ -33,6 +33,14 @@
       <ion-item><button ion-button full large icon-left (click)="toggleLight('aquarium')">
         <ion-icon [name]="icons.aquarium"></ion-icon>
         Aquarium
+      </button></ion-item>
+      <ion-item><button ion-button full large icon-left (click)="toggleLight('coffee')">
+        <ion-icon [name]="icons.coffee"></ion-icon>
+        Coffee
+      </button></ion-item>
+      <ion-item><button ion-button full large icon-left (click)="toggleLight('fan')">
+        <ion-icon [name]="icons.fan"></ion-icon>
+        Fan
       </button></ion-item>
   </ion-list>
 

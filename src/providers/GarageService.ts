@@ -1,5 +1,5 @@
 import {Injectable, OnInit} from "@angular/core";
-import {Http, Headers} from "@angular/http";
+import {Http} from "@angular/http";
 import {HouseState} from "./HouseState";
 import "rxjs/Rx";
 import "rxjs/add/operator/toPromise";
@@ -8,10 +8,10 @@ import "rxjs/add/operator/toPromise";
 export class GarageService implements OnInit {
   data: Promise<HouseState>;
 
-  private stateUrl = 'http://mozzarelly.com/garage/state';
-  private openUrl = 'http://mozzarelly.com/garage/open?auth=auth';
-  private closeUrl = 'http://mozzarelly.com/garage/close?auth=auth';
-  private lightToggleUrl = 'http://mozzarelly.com/garage/light_BULB?auth=auth';
+  private stateUrl = 'https://mozzarelly.com/home/state';
+  private openUrl = 'https://mozzarelly.com/home/openTIME?auth=Gd9kkwtTv7BW2p0Fg';
+  private closeUrl = 'https://mozzarelly.com/home/close?auth=Gd9kkwtTv7BW2p0Fg';
+  private lightToggleUrl = 'https://mozzarelly.com/home/light/BULB?auth=Gd9kkwtTv7BW2p0Fg';
 
   constructor(private http: Http) {
   }
@@ -31,18 +31,18 @@ export class GarageService implements OnInit {
 
   openGarage(time) {
     this.data = null;
-    return this.http.post(this.openUrl + time, '', new Headers({}))
+    return this.http.post(this.openUrl.replace('TIME', time), '')
       .toPromise()
   }
 
   closeGarage() {
     this.data = null;
-    return this.http.post(this.closeUrl, '', new Headers({}))
+    return this.http.post(this.closeUrl, '')
       .toPromise()
   }
 
   toggleLight(bulb) {
-    return this.http.post(this.lightToggleUrl.replace('BULB', bulb), '', new Headers({}))
+    return this.http.post(this.lightToggleUrl.replace('BULB', bulb), '')
     .toPromise()
   }
 }

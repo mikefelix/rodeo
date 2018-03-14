@@ -23,7 +23,7 @@
       <!--<button ion-button (click)="openGarage(b.key)">{{b.title}}</button>-->
     <!--</ion-item>-->
     <ion-item>
-      <ion-range snaps="true" step="1" max="31" [(ngModel)]="openMins">
+      <ion-range snaps="true" step="1" min="1" max="31" [(ngModel)]="openMins">
         <ion-label range-left>1</ion-label>
         <ion-label range-right>&infin;</ion-label>
       </ion-range>
@@ -38,5 +38,8 @@
       <button ion-button full large (click)="closeGarage()">Close</button>
     </ion-item>
   </ion-list>
-
+  
+  <ion-content text-center>
+      <img src="https://mozzarelly.com/snap?user=mozzarelly&pwd=4h1K4o7pPoZ2" />
+  </ion-content>
 </ion-content>

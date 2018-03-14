@@ -58,13 +58,13 @@ export class GaragePage implements OnInit {
   }
 
   stateText(){
-    if (!this.state || this.state.is_open === undefined) {
+    if (!this.state || this.state.garage === undefined || this.state.garage.is_open === undefined) {
       return 'Connecting...';
     }
     else {
-      let text = 'The garage is ' + (this.state.is_open ? 'open' : 'closed') + '.';
-      if (this.state.next_close_time && this.state.current_time){
-        let timeUntilClose = Math.floor((new Date(this.state.next_close_time).getTime() - new Date(this.state.current_time).getTime()) / 1000);
+      let text = 'The garage is ' + (this.state.garage.is_open ? 'open' : 'closed') + '.';
+      if (this.state.garage.next_close_time && this.state.times.current){
+        let timeUntilClose = Math.floor((new Date(this.state.garage.next_close_time).getTime() - new Date(this.state.garage.current_time).getTime()) / 1000);
         text += ' Closing in ' + timeUntilClose + ' seconds.';
       }
 
@@ -73,16 +73,16 @@ export class GaragePage implements OnInit {
   }
 
   isOpen(){
-    return this.state && this.state.is_open;
+    return this.state && this.state.garage.is_open;
   }
-
 
   info(){
     this.garageService.getHouseState()
       .then( (state: HouseState) => {
-        let times = `Last opened: ${this.formatTime(state.last_open_time)}<br/>Last closed: ${this.formatTime(state.last_close_time)}`;
-        if (state.next_close_time)
-          times += `<br/>Last opened: ${this.formatTime(state.next_close_time)}<br/>`;
+        let times = `<b>Last opened</b><br/>${this.formatTime(state.garage.last_open_time)}<br/>
+                     <b>Last closed</b><br/>${this.formatTime(state.garage.last_close_time)}<br/>`;
+        if (state.garage.next_close_time)
+          times += `<b>Next close</b>${this.formatTime(state.garage.next_close_time)}<br/>`;
 
         let alert = this.alertCtrl.create({
           title: 'Garage',
@@ -95,7 +95,7 @@ export class GaragePage implements OnInit {
   }
 
   formatTime(time){
-    var date = ('' + new Date(time)).replace(/ ?GMT-.... \(...\) ?/,'am')
+    /*var date = ('' + new Date(time)).replace(/ ?GMT-.... \(...\) ?/,'am')
       .replace(/(\w{3} \w{3} \d{2}) \d{4}/, '$1,')
       .replace(/13:(..:..)am/, "1:$1pm")
       .replace(/14:(..:..)am/, "2:$1pm")
@@ -109,6 +109,7 @@ export class GaragePage implements OnInit {
       .replace(/22:(..:..)am/, "10:$1pm")
       .replace(/23:(..:..)am/, "11:$1pm")
       .replace(/00:(..:..)am/, "12:$1am");
-    return date;
+    return date;*/
+    return time;
   }
 }
