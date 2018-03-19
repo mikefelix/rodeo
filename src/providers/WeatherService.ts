@@ -13,10 +13,10 @@ export class WeatherService implements OnInit {
   forecast2: Promise<Forecast>;
   history: Promise<History>;
 
-  private currentUrl = 'http://mozzarelly.com/weather/current';
-  private forecast1Url = 'http://mozzarelly.com/weather/forecast1';
-  private forecast2Url = 'http://mozzarelly.com/weather/forecast2';
-  private historyUrl = 'http://mozzarelly.com/weather/historical';
+  private currentUrl = 'https://mozzarelly.com/weather/current';
+  private forecast1Url = 'https://mozzarelly.com/weather/forecast1';
+  private forecast2Url = 'https://mozzarelly.com/weather/forecast2';
+  private historyUrl = 'https://mozzarelly.com/weather/historical';
 
   constructor(private http: Http) {
   }

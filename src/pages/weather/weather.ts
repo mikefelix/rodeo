@@ -57,7 +57,7 @@ export class WeatherPage implements OnInit {
   }
 
   image(cond: string){
-    return `http://mozzarelly.com/weathericons/${cond}.png`;
+    return `https://mozzarelly.com/weathericons/${cond}.png`;
   }
 
   dir(forecast: Forecast){
