@@ -10,15 +10,54 @@
 </ion-header>
 
 <ion-content>
+    <div *ngIf="errorMessage">{{errorMessage}}</div>
+    
+    <ion-list>
 
-  <ion-list-header>
-     {{bulbCountText()}}
-     <div *ngIf="errorMessage">{{errorMessage}}</div>
-   </ion-list-header>
 
-  <div *ngIf="errorMessage">{{errorMessage}}</div>
-  <ion-list>
-      <ion-item><button ion-button full medium icon-left (click)="toggleLight('outside')">
+        <ion-list-header>
+            {{bulbCountText()}}
+            <div *ngIf="errorMessage">{{errorMessage}}</div>
+        </ion-list-header>
+
+  
+  <!--<ion-grid>
+    <ion-row *ngFor="let bulb of bulbs">
+      <ion-col><div>{{bulb}}</div></ion-col>
+      <ion-col>
+        <div>            
+          <button ion-button medium (click)="toggleLight(bulb)">
+            <ion-icon [name]="icons[bulb]"></ion-icon>
+          </button>
+        </div>          
+      </ion-col>
+      <ion-col>
+        <div>
+          <button ion-button medium (click)="info(bulb)">
+            <ion-icon name="information-circle"></ion-icon>
+          </button>      
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>-->
+  <!--<ion-list>
+      <ion-item *ngFor="let bulb of bulbs">
+        <ion-label>{{cap(bulb)}}</ion-label>
+        <ion-toggle [checked]="states[bulb]" (click)="toggleLight(bulb)"></ion-toggle>
+      </ion-item>
+  </ion-list>-->
+
+    <ion-item *ngFor="let bulb of bulbs">
+        {{cap(bulb)}}
+        <button ion-button outline item-end medium (click)="info(bulb)"  style="width:10%;float:right">
+          <ion-icon name="information-circle"></ion-icon>
+        </button>
+        <button ion-button outline item-end medium (click)="toggleLight(bulb)" style="width:30%;float:right">
+            <img [src]="icons[bulb]" style="height:35px" alt="."/>
+          </button>
+      </ion-item>
+      <!--><ion-item>
+        <button ion-button full medium icon-left (click)="toggleLight('outside')">
         <ion-icon [name]="icons.outside"></ion-icon>
         Garage
       </button></ion-item>
@@ -41,7 +80,7 @@
       <ion-item><button ion-button full medium icon-left (click)="toggleLight('fan')">
         <ion-icon [name]="icons.fan"></ion-icon>
         Fan
-      </button></ion-item>
+      </button></ion-item>-->
   </ion-list>
 
 </ion-content>

@@ -177,6 +177,8 @@ export class HouseState {
     dayReset: string
   };
 
+  schedules: {};
+
   constructor(){
     this.garage = {
         is_open: false,
